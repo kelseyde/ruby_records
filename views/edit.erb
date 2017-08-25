@@ -1,0 +1,13 @@
+<h1>Manage Album</h2>
+
+  <form action="/albums/<%=@album[0].id%>" method="POST">
+    <label for="title-field">Title:</label>
+    <input type="text" name="title" id="title-field" value="<%=@album[0].title%>">
+    <br>
+    <label for="artist-field">Artist:</label>
+    <input type="text" name="artist" id="artist-field" value="<% %>">
+    <br>
+    <label for="genre-field">Genre:</label>
+    <input type="text" name="genre" id="genre-field" value="@album.genre">
+    <br>
+  </form>

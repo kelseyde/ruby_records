@@ -1,0 +1,25 @@
+<h1>Your Records</h1>
+
+<a href="/rubyrecords/home">Home</a>
+
+<a href="/rubyrecords/albums/new">Add Record</a>
+
+<% for album in @albums do %>
+<img src="/<%=album.artwork%>"/>
+<p>Title: <%=album.title%></p>
+<p>Artist: <%=album.artist.name%></p>
+<p>Genre: <%=album.genre.name%></p>
+<p>Current Stock: <%=album.current_stock%></p>
+<p>Target Stock: <%=album.target_stock%></p>
+<p>Buy Price: <%=album.buy_price%></p>
+<p>Sell Price: <%=album.sell_price%></p>
+
+<p><a href="/rubyrecords/albums/<%=album.id%>/edit">Manage Album</a></p>
+
+<form action = "/rubyrecords/albums/<%=album.id%>/delete" method= "POST">
+  <input type="submit" value="Remove Album"/>
+</form>
+
+<hr/>
+
+<% end %>
