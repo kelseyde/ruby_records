@@ -1,0 +1,10 @@
+<h1>Your Order</h1>
+
+<form action="/rubyrecords/albums/<%= @album.id %>/pay" method="post">
+
+  <label for="order-quantity">How many copies of <%= @album.title %> would you like to order?</label>
+    <input type="number" name="quantity" id="order-quantity">
+  <br>
+  <input type="submit" value="Next"/>
+
+</form>

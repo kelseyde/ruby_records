@@ -1,0 +1,18 @@
+<h1>Payment</h1>
+
+<% if @outcome == false  %>
+
+  <p>You cannot afford <%=@quantity%> copies of <%=@album.title%>.<br>
+     Total cost: <%=@amount%><br>
+     Total cash: <%=@store.cash%></p>
+
+<% else %>
+
+  <p>Order: <%=@quantity%>x <%=@album.title%>.<br>
+     Total cost: <%=@amount%>.<br>
+     Would you like to proceed?
+  </p>
+
+  <input type="submit" value="Place My Order"/>
+
+<% end %>

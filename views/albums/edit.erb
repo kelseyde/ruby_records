@@ -1,6 +1,10 @@
 <h1>Manage Album</h2>
 
+
+<p id="buy"><a href="/rubyrecords/albums/<%= @album.id %>/order">Order more of this album</a></p>
+
 <form action="rubyrecords/albums/<%= @album.id %>" method="POST">
+
   <label for="title-field">Title:</label>
     <input type="text" name="title" id="title-field" value="<%= @album.title %>">
   <br>
@@ -29,3 +33,5 @@
     <input type="number" name="sell_price" id="sprice-field" value="<%= @album.sell_price %>">
   <br>
   <input type="submit" value="Submit Changes"/>
+
+</form>

@@ -50,19 +50,18 @@ class Store
   end
 
 
+  def can_i_afford?(album, quantity=1)
+    return "Incorrect input." if album.class != Album
+    return "Incorrect input." if quantity.class != Integer
+    return @cash >= (album.buy_price * quantity)
+    end
 
   def buy_albums(album, quantity=1)
     return "Incorrect input." if album.class != Album
     return "Incorrect input." if quantity.class != Integer
-    if @cash < (album.buy_price * quantity)
-      return "You cannot afford #{quantity.to_s} copies of #{album.title}."
-             "Total cost: #{(album.buy_price * quantity).to_s}"
-             "Total cash: #{@cash.to_s}"
-    end
+    return "Insufficient funds." if can_i_afford?(album, quantity) == false
     @cash -= (album.buy_price * quantity)
     album.current_stock += quantity
-    return "You have purchased #{quantity.to_s} copies of #{album.title}."
-           "Your total cash is now #{@cash.to_s}."
   end
 
   def sell_albums(album, quantity=1)

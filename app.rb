@@ -53,6 +53,27 @@ post "/rubyrecords/albums/:id/delete" do
   redirect "/rubyrecords/albums"
 end
 
+get "/rubyrecords/albums/:id/order" do
+  @album = Album.find(params[:id])
+  erb(:"albums/order")
+end
+
+post "/rubyrecords/albums/:id/pay" do
+  @album = Album.find(params[:id])
+  @store = Store.all.first
+  @quantity = params[:quantity]
+  @outcome = @store.can_i_afford?(params[:id], @quantity)
+  @amount = @album.buy_price * @quantity.to_i
+  erb(:"albums/pay")
+end
+
+post "/rubyrecords/albums/:id/buy" do
+  @album = Album.find(params[:id])
+  @store = Store.all.first
+  @store.buy_albums(@album, @quantity)
+  erb(:"albums/buy")
+end
+
 get "/rubyrecords/store" do
   @store = Store.all.first
   erb(:"store/index")

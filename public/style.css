@@ -25,6 +25,11 @@ img {
   width: 200px;
 }
 
+#buy {
+  font-family: Comic;
+  text-align: left;
+}
+
 @media (min-width: 480px) {
   .grid-row-sm {
     flex-direction: row;
