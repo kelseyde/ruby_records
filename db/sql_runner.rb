@@ -1,5 +1,7 @@
 require('pg')
 
+#SqlRunner class to interact with SQL from ruby
+
 class SqlRunner
 
   def self.run( sql, values=[] )
@@ -14,3 +16,16 @@ class SqlRunner
   end
 
 end
+
+#Sql methods for CRUD actions
+
+# module SqlMethods
+#
+#   def save
+#     sql = "INSERT INTO #{self.class.to_s.downcase + "s"} (#{@@rows}) VALUES (#{@@prepared}) RETURNING id;"
+#     values = @@values
+#     result = SqlRunner.run(sql, values)
+#     @id = result[0]["id"].to_i
+#   end
+#
+# end

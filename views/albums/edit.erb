@@ -1,0 +1,31 @@
+<h1>Manage Album</h2>
+
+<form action="rubyrecords/albums/<%= @album.id %>" method="POST">
+  <label for="title-field">Title:</label>
+    <input type="text" name="title" id="title-field" value="<%= @album.title %>">
+  <br>
+  <label for="artist-field">Artist:</label>
+    <input type="text" name="artist" id="artist-field" value="<%= @album.artist.name %>">
+  <br>
+  <label for="genre-field">Genre:</label>
+    <input type="text" name="genre" id="genre-field" value="<%= @album.genre.name %>">
+  <br>
+  <label for="artwork-field">Artwork:</label>
+    <input type="text" name="artwork" id="artwork-field" value="<%= @album.artwork %>">
+  <br>
+  <label for="sold-field">Sold:</label>
+    <input type="number" name="sold" id="sold-field" value="<%= @album.sold %>">
+  <br>
+  <label for="cstock-field">Current Stock:</label>
+    <input type="number" name="current_stock" id="cstock-field" value="<%= @album.current_stock %>">
+  <br>
+  <label for="tstock-field">Target Stock:</label>
+    <input type="number" name="target_stock" id="tstock-field" value="<%= @album.target_stock %>">
+  <br>
+  <label for="bprice-field">Buy Price:</label>
+    <input type="number" name="buy_price" id="bprice-field" value="<%= @album.buy_price %>">
+  <br>
+  <label for="sprice-field">Sell Price:</label>
+    <input type="number" name="sell_price" id="sprice-field" value="<%= @album.sell_price %>">
+  <br>
+  <input type="submit" value="Submit Changes"/>

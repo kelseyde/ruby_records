@@ -17,8 +17,8 @@ CREATE TABLE genres (
 CREATE TABLE albums (
   id SERIAL PRIMARY KEY,
   title VARCHAR(255),
-  artist_id INT REFERENCES artists(id),
-  genre_id INT REFERENCES genres(id),
+  artist_id INT REFERENCES artists(id) ON DELETE CASCADE,
+  genre_id INT REFERENCES genres(id) ON DELETE CASCADE,
   artwork TEXT,
   sold INT,
   current_stock INT,
@@ -31,7 +31,7 @@ CREATE TABLE reviews (
   id SERIAL PRIMARY KEY,
   review TEXT,
   rating INT,
-  album_id INT REFERENCES albums(id)
+  album_id INT REFERENCES albums(id) ON DELETE CASCADE
 );
 
 CREATE TABLE stores (

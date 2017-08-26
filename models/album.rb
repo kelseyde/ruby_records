@@ -19,11 +19,12 @@ class Album
     @buy_price = info["buy_price"]
     @sell_price = info["sell_price"]
 
-    # @sql_table = "albums"
-    # @values = [@title, @artist_id, @genre_id, @artwork, @sold,
+    # @@rows = "title, artist_id, genre_id, artwork, sold, current_stock, "\
+    #         "target_stock, buy_price, sell_price"
+    # @@prepared = "$1, $2, $3, $4, $5, $6, $7, $8, $9"
+    # @@values = [@title, @artist_id, @genre_id, @artwork, @sold,
     #           @current_stock, @target_stock, @buy_price, @sell_price]
   end
-
 
   def self.map_items(album_hash)
     return album_hash.map {|album| Album.new(album)}
@@ -76,7 +77,7 @@ class Album
 
   def self.find(id)
     sql = "SELECT * FROM albums WHERE id = $1;"
-    return Album.map_items(SqlRunner.run(sql,[id]))
+    return Album.map_items(SqlRunner.run(sql,[id])).first
   end
 
   def self.delete_by_id(id)
