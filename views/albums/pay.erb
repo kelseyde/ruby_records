@@ -12,7 +12,12 @@
      Total cost: <%=@amount%>.<br>
      Would you like to proceed?
   </p>
+  <a href="/rubyrecords/albums">Cancel</a>
 
+<form action="/rubyrecords/albums/<%=@album.id%>/buy" method="post">
+  <label for="quantity">Order</label>
+  <input type="number" name="quantity" id="quantity" value="<%=@quantity%>"/>
   <input type="submit" value="Place My Order"/>
+</form>
 
 <% end %>

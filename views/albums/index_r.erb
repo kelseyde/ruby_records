@@ -3,11 +3,10 @@
 <div class="index">
 <a href="/rubyrecords/albums/new">Add Record</a>
 <a href="/rubyrecords/albums/alpha">Sort by A-Z</a>
-<a href="/rubyrecords/albums/rating">Sort by Rating</a>
 </div>
 
 <div class="grid">
-  <% for album in @albums do %>
+  <% Album.sort_by_rating.each do |album| %>
     <div class="grid-item">
       <img src="/<%=album.artwork%>"/>
       <table>

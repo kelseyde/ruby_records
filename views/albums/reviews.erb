@@ -1,0 +1,7 @@
+<h1>Customer Reviews <br>"<%=@album.title%>" by <%=@album.artist.name%></h1>
+
+<% for review in @reviews do %>
+  <p>Review: <%= review.review %></p>
+  <p>Rating: <%= review.rating %></p>
+  <hr>
+<% end %>

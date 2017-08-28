@@ -1,0 +1,13 @@
+<h1>Your Artists</h1>
+
+<div class="grid">
+  <% for artist in @artists do %>
+    <div class="grid-item">
+      <p>Name: <%=artist.name%></p>
+      <p>Albums:</p>
+      <% for album in artist.albums do %>
+      <a href="/rubyrecords/albums/<%= album.id %>/edit"><%= album.title %></a>
+      <% end %>
+    </div>
+  <% end %>
+</div>

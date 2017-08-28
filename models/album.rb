@@ -1,5 +1,6 @@
 require_relative("../db/sql_runner")
 require_relative("artist")
+require_relative("review")
 
 class Album
 
@@ -10,14 +11,14 @@ class Album
   def initialize(info)
     @id = info["id"].to_i if info["id"]
     @title = info["title"]
-    @artist_id = info["artist_id"]
-    @genre_id = info["genre_id"]
+    @artist_id = info["artist_id"].to_i
+    @genre_id = info["genre_id"].to_i
     @artwork = info["artwork"]
-    @sold = info ["sold"]
-    @current_stock = info["current_stock"]
-    @target_stock = info["target_stock"]
-    @buy_price = info["buy_price"]
-    @sell_price = info["sell_price"]
+    @sold = info["sold"].to_i
+    @current_stock = info["current_stock"].to_i
+    @target_stock = info["target_stock"].to_i
+    @buy_price = info["buy_price"].to_i
+    @sell_price = info["sell_price"].to_i
 
     # @@rows = "title, artist_id, genre_id, artwork, sold, current_stock, "\
     #         "target_stock, buy_price, sell_price"
@@ -80,6 +81,11 @@ class Album
     return Album.map_items(SqlRunner.run(sql,[id])).first
   end
 
+  def self.find_by_name(title)
+    sql = "SELECT * FROM albums WHERE title = $1;"
+    return Album.map_items(SqlRunner.run(sql, [title])).first
+  end
+
   def self.delete_by_id(id)
     sql = "DELETE FROM albums WHERE id = $1;"
     SqlRunner.run(sql, [id])
@@ -96,6 +102,11 @@ class Album
     return Artist.map_items(SqlRunner.run(sql, [@artist_id])).first
   end
 
+  def reviews
+    sql = "SELECT * FROM reviews WHERE album_id = $1;"
+    return Review.map_items(SqlRunner.run(sql, [@id]))
+  end
+
   def genre
     sql = "SELECT * FROM genres WHERE id = $1;"
     return Genre.map_items(SqlRunner.run(sql, [@genre_id])).first
@@ -109,9 +120,16 @@ class Album
     sql = "SELECT * FROM reviews WHERE album_id = $1"
     reviews = Review.map_items(SqlRunner.run(sql, [@id]))
     count = reviews.length
-    sum = 0.0
-    reviews.each {|review| sum += review.rating.to_f}
+    sum = 0
+    reviews.each {|review| sum += review.rating}
+    return sum if sum == 0
     return sum / count
+  end
+
+  def rating_to_stars
+    stars = ""
+    self.avg_rating.times{ stars += "*" }
+    return stars
   end
 
   def self.sort_by_rating

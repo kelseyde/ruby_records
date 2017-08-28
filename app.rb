@@ -3,14 +3,12 @@ require("sinatra/contrib/all")
 require("pry-byebug")
 require_relative("./models/store")
 require_relative("./models/album")
+require_relative("./models/genre")
+require_relative("./models/review")
 also_reload("models/*")
 also_reload("views/*")
 
 get "/rubyrecords" do
-  erb(:welcome)
-end
-
-get "/rubyrecords/home" do
   erb(:home)
 end
 
@@ -26,16 +24,53 @@ get "/rubyrecords/albums" do
   erb(:"albums/index")
 end
 
+get "/rubyrecords/albums/alpha" do
+  @albums = Album.all
+  @artists = Artist.all
+  @genres = Genre.all
+  @reviews = Review.all
+  erb(:"albums/index_a")
+end
+
+get "/rubyrecords/albums/rating" do
+  @albums = Album.all
+  @artists = Artist.all
+  @genres = Genre.all
+  @reviews = Review.all
+  erb(:"albums/index_r")
+end
+
+get "/rubyrecords/albums/alpha" do
+  @albums = Album.all
+  @artists = Artist.all
+  @genres = Genre.all
+  @reviews = Review.all
+  erb(:"albums/index_alpha")
+end
+
 get "/rubyrecords/albums/new" do
   @albums = Album.all
   erb(:"albums/new")
 end
 
 post "/rubyrecords/albums" do
-  puts params
-  @album= Album.new(params)
-  @album.save
-  erb(:"albums/create")
+
+  artist = Artist.find_by_name(params[:artist]).first
+  if artist == nil
+    artist = Artist.new({"name" => params[:artist]}).save
+  end
+
+  genre = Genre.find_by_name(params[:genre]).first
+  if genre == nil
+    genre = Genre.new({"name" => params[:genre]}).save
+  end
+
+  params[:artist_id] = artist.id
+  params[:genre_id] = genre.id
+
+  @album = Album.new(params).save
+  @albums = Album.all
+  erb(:"albums/index")
 end
 
 get "/rubyrecords/albums/:id/edit" do
@@ -53,6 +88,12 @@ post "/rubyrecords/albums/:id/delete" do
   redirect "/rubyrecords/albums"
 end
 
+get "/rubyrecords/albums/:id/reviews" do
+  @album = Album.find(params[:id])
+  @reviews = @album.reviews
+  erb(:"albums/reviews")
+end
+
 get "/rubyrecords/albums/:id/order" do
   @album = Album.find(params[:id])
   erb(:"albums/order")
@@ -61,17 +102,30 @@ end
 post "/rubyrecords/albums/:id/pay" do
   @album = Album.find(params[:id])
   @store = Store.all.first
-  @quantity = params[:quantity]
-  @outcome = @store.can_i_afford?(params[:id], @quantity)
-  @amount = @album.buy_price * @quantity.to_i
+  @quantity = params[:quantity].to_i
+  @outcome = @store.can_i_afford?(@album.buy_price, @quantity)
+  @amount = (@album.buy_price * @quantity)
   erb(:"albums/pay")
 end
 
 post "/rubyrecords/albums/:id/buy" do
   @album = Album.find(params[:id])
   @store = Store.all.first
+  @quantity = params[:quantity].to_i
   @store.buy_albums(@album, @quantity)
+  @store.save
+  @album.save
   erb(:"albums/buy")
+end
+
+post "/rubyrecords/home" do
+  found = Album.find_by_name(params["title"])
+  redirect "rubyrecords/albums/#{found.id}/edit"
+end
+
+get "/rubyrecords/artists" do
+  @artists = Artist.all
+  erb(:"artists/index")
 end
 
 get "/rubyrecords/store" do

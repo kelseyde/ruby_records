@@ -35,6 +35,11 @@ class Genre
     return Genre.map_items(SqlRunner.run(sql,[id]))
   end
 
+  def self.find_by_name(name)
+    sql = "SELECT * FROM genres WHERE name = $1;"
+    return Genre.map_items(SqlRunner.run(sql, [name]))
+  end
+
   def self.delete_by_id(id)
     SqlRunner.run("DELETE FROM genres WHERE id = $1;", [id])
   end

@@ -1,37 +1,38 @@
 <h1>Manage Album</h2>
 
 
-<p id="buy"><a href="/rubyrecords/albums/<%= @album.id %>/order">Order more of this album</a></p>
 
-<form action="rubyrecords/albums/<%= @album.id %>" method="POST">
+<p class = "order_more" id="buy"><a href="/rubyrecords/albums/<%= @album.id %>/order">Order more of this album</a></p>
 
-  <label for="title-field">Title:</label>
-    <input type="text" name="title" id="title-field" value="<%= @album.title %>">
-  <br>
-  <label for="artist-field">Artist:</label>
-    <input type="text" name="artist" id="artist-field" value="<%= @album.artist.name %>">
-  <br>
-  <label for="genre-field">Genre:</label>
-    <input type="text" name="genre" id="genre-field" value="<%= @album.genre.name %>">
-  <br>
-  <label for="artwork-field">Artwork:</label>
-    <input type="text" name="artwork" id="artwork-field" value="<%= @album.artwork %>">
-  <br>
-  <label for="sold-field">Sold:</label>
-    <input type="number" name="sold" id="sold-field" value="<%= @album.sold %>">
-  <br>
-  <label for="cstock-field">Current Stock:</label>
-    <input type="number" name="current_stock" id="cstock-field" value="<%= @album.current_stock %>">
-  <br>
-  <label for="tstock-field">Target Stock:</label>
-    <input type="number" name="target_stock" id="tstock-field" value="<%= @album.target_stock %>">
-  <br>
-  <label for="bprice-field">Buy Price:</label>
-    <input type="number" name="buy_price" id="bprice-field" value="<%= @album.buy_price %>">
-  <br>
-  <label for="sprice-field">Sell Price:</label>
-    <input type="number" name="sell_price" id="sprice-field" value="<%= @album.sell_price %>">
-  <br>
+<form class = "edit_album_form" action="rubyrecords/albums/<%= @album.id %>" method="POST">
+
+  <label class = "edit_album_label" for="title-field">Title:</label><br>
+    <input class = "edit_album" type="text" name="title" id="title-field" value="<%= @album.title %>">
+<br>
+  <label class = "edit_album_label" for="artist-field">Artist:</label><br>
+    <input class = "edit_album type="text" name="artist" id="artist-field" value="<%= @album.artist.name %>">
+<br>
+  <label class = "edit_album_label" for="genre-field">Genre:</label><br>
+    <input class = "edit_album type="text" name="genre" id="genre-field" value="<%= @album.genre.name %>">
+<br>
+  <label class = "edit_album_label" for="artwork-field">Artwork:</label><br>
+    <input class = "edit_album type="text" name="artwork" id="artwork-field" value="<%= @album.artwork %>">
+<br>
+  <label class = "edit_album_label" for="sold-field">Sold:</label><br>
+    <input class = "edit_album type="number" name="sold" id="sold-field" value="<%= @album.sold %>">
+<br>
+  <label class = "edit_album_label" for="cstock-field">Current Stock:</label><br>
+    <input class = "edit_album type="number" name="current_stock" id="cstock-field" value="<%= @album.current_stock %>">
+<br>
+  <label class = "edit_album_label" for="tstock-field">Target Stock:</label><br>
+    <input class = "edit_album type="number" name="target_stock" id="tstock-field" value="<%= @album.target_stock %>">
+<br>
+  <label class = "edit_album_label" for="bprice-field">Buy Price:</label><br>
+    <input class = "edit_album type="number" name="buy_price" id="bprice-field" value="<%= @album.buy_price %>">
+<br>
+  <label class = "edit_album_label" for="sprice-field">Sell Price:</label><br>
+    <input class = "edit_album type="number" name="sell_price" id="sprice-field" value="<%= @album.sell_price %>">
+<br>
   <input type="submit" value="Submit Changes"/>
 
 </form>

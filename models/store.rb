@@ -12,7 +12,7 @@ class Store
     @id = info["id"].to_i if info["id"]
     @name = info["name"]
     @location = info["location"]
-    @cash = info["cash"]
+    @cash = info["cash"].to_i
   end
 
   def self.map_items(store_hash)
@@ -54,7 +54,7 @@ class Store
     return "Incorrect input." if album.class != Album
     return "Incorrect input." if quantity.class != Integer
     return @cash >= (album.buy_price * quantity)
-    end
+  end
 
   def buy_albums(album, quantity=1)
     return "Incorrect input." if album.class != Album

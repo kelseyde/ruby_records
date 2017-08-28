@@ -8,7 +8,7 @@ class Review
   def initialize(info)
     @id = info["id"].to_i if info["id"]
     @review = info["review"]
-    @rating = info["rating"]
+    @rating = info["rating"].to_i
     @album_id = info["album_id"]
   end
 
