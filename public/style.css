@@ -1,4 +1,24 @@
-#site { overflow-x: hidden; }
+.home {
+  position: absolute;
+  align-items: center;
+  text-align: center;
+  top: 200px;
+  left: 535px;
+}
+
+.navbar {
+  display: flex;
+  align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+
+.nav-item {
+  flex: 1;
+  padding: 5px;
+  max-width: 200px;
+  min-width: 100px;
+}
 
 ul {
   list-style-type: none;
@@ -30,6 +50,20 @@ li a:hover {
   background-color:#4CAF50;
 }
 
+.about {
+  margin-top: 100px;
+}
+
+#about {
+  text-align: center;
+  margin-top: 30px;
+}
+
+#store-info {
+  text-align: center;
+  margin-top: 60px;
+}
+
 .index {
   display: block;
   margin: auto;
@@ -45,9 +79,6 @@ li a:hover {
   padding-right: 10px;
 }
 
-.index a:hover {
-  color: black;
-}
 
 .index a:visited {
   text-decoration: none;
@@ -81,6 +112,24 @@ img {
   background: #e1e1e1;
 }
 
+#notfound {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  margin-top: 200px;
+}
+
+#manage_stock {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  text-decoration: bold;
+  color: #cc0000;
+  margin-top: 10px;
+}
+
+#manage_stock:visited {
+  text-decoration: none;
+  color: #cc0000
+}
 
 .grid {
   display: flex;
@@ -88,26 +137,26 @@ img {
   flex-direction: row;
   flex-wrap: wrap;
   padding: 20px;
-  margin: 1px 100px 1px 100px;
-}
+  margin: 1px 90px 1px 90px;
+  justify-content: space-between;
 
+}
 
 .grid-item {
-  border: 1px solid red;
-  flex: 5;
+  border: 2px solid red;
+  margin-bottom: 20px;
+  flex: 1;
   padding: 5px;
-
-}
-
-.grid-item:nth-grid-item(3n+1) {
-    clear: left;
-}
-
+  max-width: 320px;
+  min-width: 300px;
+  max-height: 560px;
+  min-height: 560px;
 }
 
 .grid-item img {
-  width: 200px;
-  height: auto;
+  min-height: 190px;
+  max-height: 190px;
+  width: auto;
   padding-top: 20px;
 }
 
@@ -148,6 +197,36 @@ img {
   padding-bottom: 9px;
 }
 
+.grid-a {
+  display: flex;
+  align-content: flex-start;
+  flex-direction: row;
+  flex-wrap: wrap;
+  padding: 20px;
+  margin: 1px 70px 1px 70px;
+  justify-content: left;
+}
+
+.grid-item-a {
+  border: 2px solid red;
+  margin-bottom: 20px;
+  flex: 1;
+  padding: 5px;
+  max-width: 375px;
+  min-width: 375px;
+  max-height: 100px;
+  min-height: 100px;
+}
+
+#grid-a-p {
+  padding-left: 10px;
+}
+
+#artist_name {
+  margin-left: 20px;
+}
+
+
 #buy {
   font-family: 'PT Sans Caption', sans-serif;
   text-align: left;
@@ -173,14 +252,8 @@ img {
 
 p {
   font-family: 'PT Sans Caption', sans-serif;
-  text-align: center;
 }
 
-.home {
-  position: absolute;
-  top: 200px;
-  left: 535px;
-}
 
 .new_album {
   width: 22%;
@@ -222,6 +295,14 @@ p {
   resize: none;
 }
 
+/*artists*/
+
+#artists {
+  margin-left: 30px;
+}
+
+/* order/pay/buy styling */
+
 .order_more {
   margin-left: 30px;
   color: #cc0000
@@ -231,6 +312,90 @@ p {
   text-decoration: none;
   color: #cc0000;
 }
+
+#order_form {
+  margin-top: 50px;
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-left: 30px;
+
+}
+
+#order_label {
+  font-family: 'PT Sans Caption', sans-serif;
+  font-size: 15px;
+
+}
+
+#order_input {
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-top: 10px;
+}
+
+#order_button {
+  margin-top: 10px;
+}
+
+#pay_p {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: none;
+  margin-left: 30px;
+}
+
+#pay_cancel {
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-left: 30px;
+}
+
+#pay_cancel:visited {
+  text-decoration: none;
+  color: #cc0000;
+  margin-left: 30px;
+}
+
+#pay_form {
+  margin-left: 30px;
+}
+
+#pay_label {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+#pay_input {
+  font-family: 'PT Sans Caption', sans-serif;
+  width: 70px;
+}
+
+#pay_submit {
+  font-family: 'PT Sans Caption', sans-serif;
+  width: 100px;
+}
+
+#buy_p {
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+#buy_a {
+  font-family: 'PT Sans Caption', sans-serif;
+  margin-top: 100px;
+  margin-left: 30px;
+}
+
+.stock_text {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.stock-div {
+  margin-left: 50px;
+  margin-top: 60px;
+}
+
+.stock-form {
+  margin-left: 50px;
+}
+
+/*footer*/
 
 #footer_box {
   margin-top: 640px;

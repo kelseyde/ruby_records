@@ -1,4 +1,4 @@
-<h1>Your Records</h1>
+<h1>Your Albums</h1>
 
 <div class="index">
 <a href="/rubyrecords/albums/new">Add Record</a>
@@ -6,19 +6,23 @@
 <a href="/rubyrecords/albums/rating">Sort by Rating</a>
 </div>
 
+<div id="manage_stock">
+  <a href="/rubyrecords/albums/stock">Manage Stock</a>
+</div>
+
 <div class="grid">
   <% for album in @albums do %>
     <div class="grid-item">
       <img src="/<%=album.artwork%>"/>
       <table>
-      <tr><td>Title:</td><td><%=album.title%></td></tr>
-      <tr><td>Artist:</td><td><%=album.artist.name%></td></tr>
-      <tr><td>Genre:</td><td><%=album.genre.name%></td></tr>
-      <tr><td>Current Stock:</td><td><%=album.current_stock%></td></tr>
-      <tr><td>Target Stock:</td><td><%=album.target_stock%></td></tr>
-      <tr><td>Buy Price:</td><td><%=album.buy_price%></td></tr>
-      <tr><td>Sell Price:</td><td><%=album.sell_price%></td></tr>
-      <tr><td>Rating:</td><td><span style="color:#FAE01C"><%=album.rating_to_stars%></span></td></tr>
+        <tr><td>Title:</td><td><%=album.title%></td></tr>
+        <tr><td>Artist:</td><td><%=album.artist.name%></td></tr>
+        <tr><td>Genre:</td><td><%=album.genre.name%></td></tr>
+        <tr><td>Current Stock:</td><td><%=album.current_stock%></td></tr>
+        <tr><td>Target Stock:</td><td><%=album.target_stock%></td></tr>
+        <tr><td>Buy Price:</td><td>£<%=album.buy_price%></td></tr>
+        <tr><td>Sell Price:</td><td>£<%=album.sell_price%></td></tr>
+        <tr><td>Rating:</td><td><span style="color:#FAE01C"><%=album.rating_to_stars%></span></td></tr>
       </table>
       <a class = "button" href="/rubyrecords/albums/<%=album.id%>/reviews">Customer Reviews</a>
       <a class = "button" href="/rubyrecords/albums/<%=album.id%>/edit">Manage Album</a>

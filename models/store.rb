@@ -77,5 +77,12 @@ class Store
            "Copies of #{album.title} left in stock: #{album.current_stock}"
   end
 
+  def stock_update(album)
+    return "Incorrect input" if album.class != Album
+    quantity = album.target_stock - album.current_stock
+    album.current_stock += quantity
+    @cash -= (album.buy_price * quantity)
+  end
+
 
 end

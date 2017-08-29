@@ -9,6 +9,7 @@ also_reload("models/*")
 also_reload("views/*")
 
 get "/rubyrecords" do
+  @albums = Album.alphabetise
   erb(:home)
 end
 
@@ -79,6 +80,19 @@ get "/rubyrecords/albums/:id/edit" do
 end
 
 post "/rubyrecords/albums/:id" do
+
+  artist = Artist.find_by_name(params[:artist]).first
+  if artist == nil
+    artist = Artist.new({"name" => params[:artist]}).save
+  end
+
+  genre = Genre.find_by_name(params[:genre]).first
+  if genre == nil
+    genre = Genre.new({"name" => params[:genre]}).save
+  end
+
+  params[:artist_id] = artist.id
+  params[:genre_id] = genre.id
   album = Album.new(params)
   album.update
 end
@@ -103,7 +117,7 @@ post "/rubyrecords/albums/:id/pay" do
   @album = Album.find(params[:id])
   @store = Store.all.first
   @quantity = params[:quantity].to_i
-  @outcome = @store.can_i_afford?(@album.buy_price, @quantity)
+  @outcome = @store.can_i_afford?(@album, @quantity)
   @amount = (@album.buy_price * @quantity)
   erb(:"albums/pay")
 end
@@ -113,18 +127,44 @@ post "/rubyrecords/albums/:id/buy" do
   @store = Store.all.first
   @quantity = params[:quantity].to_i
   @store.buy_albums(@album, @quantity)
-  @store.save
-  @album.save
+  @store.update
+  @album.update
   erb(:"albums/buy")
 end
 
 post "/rubyrecords/home" do
   found = Album.find_by_name(params["title"])
-  redirect "rubyrecords/albums/#{found.id}/edit"
+  redirect "/rubyrecords/notfound" if found.nil?
+  redirect "/rubyrecords/albums/#{found.id}/edit"
+end
+
+get "/rubyrecords/albums/stock" do
+  @low_stock = Album.low_stock
+  @out_of_stock = Album.out_of_stock
+  @total_cost = Album.cost_to_replace
+  erb(:"albums/stock")
+end
+
+post "/rubyrecords/albums/stock/replace" do
+  @store = Store.all.first
+  Album.low_stock.each do |info|
+    @store.stock_update(info[:album])
+    info[:album].update
+  end
+  Album.out_of_stock.each do |info|
+    @store.stock_update(info[:album])
+    info[:album].update
+  end
+  redirect "/rubyrecords/albums"
+end
+
+get "/rubyrecords/notfound" do
+  erb(:"albums/notfound")
 end
 
 get "/rubyrecords/artists" do
   @artists = Artist.all
+  @albums = Album.all
   erb(:"artists/index")
 end
 

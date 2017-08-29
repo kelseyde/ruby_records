@@ -1,13 +1,16 @@
 <h1>Your Artists</h1>
 
-<div class="grid">
+<div class="grid-a" id="artists">
   <% for artist in @artists do %>
-    <div class="grid-item">
-      <p>Name: <%=artist.name%></p>
-      <p>Albums:</p>
-      <% for album in artist.albums do %>
-      <a href="/rubyrecords/albums/<%= album.id %>/edit"><%= album.title %></a>
-      <% end %>
+    <div class="grid-item-a" id="artists">
+      <p id="grid-a-p">Name:<span id="artist_name"><%=artist.name%></span></p>
+      <p id="grid-a-p">Albums:
+      <% for album in @albums do %>
+        <% if album.artist_id == artist.id %>
+          <a href="/rubyrecords/albums/<%= album.id %>/edit">"<%= album.title %>"</a>
+        <% end %>
+      <% end %></p>
     </div>
+    <br>
   <% end %>
 </div>

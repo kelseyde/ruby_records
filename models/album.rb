@@ -137,8 +137,42 @@ class Album
   end
 
 
+  def self.low_stock
+    low_stock = []
+    for album in Album.all
+      if album.current_stock < album.target_stock && album.current_stock > 0
+        info = {
+          album: album,
+          below_target: album.target_stock - album.current_stock,
+          cost: album.buy_price * album.target_stock - album.current_stock
+        }
+        low_stock << info
+      end
+    end
+    return low_stock
+  end
 
+  def self.out_of_stock
+    out_of_stock = []
+    for album in Album.all
+      if album.current_stock == 0
+        info = {
+          album: album,
+          below_target: album.target_stock,
+          cost: album.buy_price * album.target_stock
+        }
+        out_of_stock << info
+      end
+    end
+    return out_of_stock
+  end
 
+  def self.cost_to_replace
+    cost = 0
+    low_stock.each {|info| cost += info[:cost]}
+    out_of_stock.each {|info| cost += info[:cost]}
+    return cost
+  end
 
 
 end

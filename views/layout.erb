@@ -4,10 +4,11 @@
     <meta charset="utf-8">
     <title>Ruby Records</title>
     <link rel="stylesheet" href="/style.css"/>
+    <link rel="icon" href="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1000px-Ruby_logo.svg.png">
     <link href="https://fonts.googleapis.com/css?family=PT+Sans+Caption" rel="stylesheet">
   </head>
   <body>
-    <ul class "navbar">
+    <ul>
       <li><a href="/rubyrecords">Home</a></li>
       <li><a href="/rubyrecords/albums">Your Albums</a></li>
       <li><a href="/rubyrecords/artists">Your Artists</a></li>
@@ -15,11 +16,26 @@
       <li><a href="/rubyrecords/about">About</a></li>
       <form class="search" action="/rubyrecords/home" method="post">
         <label for="album_by_name"></label>
-        <input class = "search-box" type="text" name="title" id="album_by_name" placeholder="Search...">
+        <input class = "search-box" type="text" name="title" id="album_by_name" placeholder="Search..." list="auto" autocomplete="off">
+        <datalist id="auto">
+          <% @albums = Album.alphabetise %>
+          <% for album in @albums do %>
+          <option value="<%= album.title %>">
+          <% end %>
+        </datalist>
         <input class = "search-button" type="submit" value="Search">
       </form>
       <img class = "icon" src="https://upload.wikimedia.org/wikipedia/commons/thumb/7/73/Ruby_logo.svg/1000px-Ruby_logo.svg.png">
     </ul>
+    <div class="navbar">
+      <div class="nav-item" id="rainbow1" style="background-color: #9400D3"></div>
+      <div class="nav-item" id="rainbow2" style="background-color: #4B0082"></div>
+      <div class="nav-item" id="rainbow3" style="background-color: #0000FF"></div>
+      <div class="nav-item" id="rainbow4" style="background-color: #00FF00"></div>
+      <div class="nav-item" id="rainbow5" style="background-color: #FFFF00"></div>
+      <div class="nav-item" id="rainbow6" style="background-color: #FF7F00"></div>
+      <div class="nav-item" id="rainbow7" style="background-color: #FF0000"></div>
+    </div>
     <%= yield %>
 
 <footer>

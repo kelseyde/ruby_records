@@ -2,22 +2,24 @@
 
 <% if @outcome == false  %>
 
-  <p>You cannot afford <%=@quantity%> copies of <%=@album.title%>.<br>
-     Total cost: <%=@amount%><br>
-     Total cash: <%=@store.cash%></p>
+  <p id="pay_p">You cannot afford <%=@quantity%> copies of <%=@album.title%>.<br>
+     Total cost: £<%=@amount%><br>
+     Total cash: £<%=@store.cash%></p>
 
 <% else %>
 
-  <p>Order: <%=@quantity%>x <%=@album.title%>.<br>
-     Total cost: <%=@amount%>.<br>
+  <p id="pay_p">Order: <%=@quantity%>x <%=@album.title%>.<br>
+     Total cost: £<%=@amount%>.<br>
      Would you like to proceed?
   </p>
-  <a href="/rubyrecords/albums">Cancel</a>
 
-<form action="/rubyrecords/albums/<%=@album.id%>/buy" method="post">
-  <label for="quantity">Order</label>
-  <input type="number" name="quantity" id="quantity" value="<%=@quantity%>"/>
-  <input type="submit" value="Place My Order"/>
+<form id="pay_form" action="/rubyrecords/albums/<%=@album.id%>/buy" method="post">
+  <label id="pay_label" for="quantity">Order:</label>
+  <input id="pay_input" type="number" name="quantity" id="quantity" value="<%=@quantity%>"/>
+  <input id="pay_submit" type="submit" value="Place My Order"/>
 </form>
+<br>
 
 <% end %>
+
+<a id="pay_cancel"href="/rubyrecords/albums">Cancel</a>
