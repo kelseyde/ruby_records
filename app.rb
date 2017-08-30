@@ -95,6 +95,7 @@ post "/rubyrecords/albums/:id" do
   params[:genre_id] = genre.id
   album = Album.new(params)
   album.update
+  redirect "/rubyrecords/albums"
 end
 
 post "/rubyrecords/albums/:id/delete" do

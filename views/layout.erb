@@ -16,7 +16,7 @@
       <li><a href="/rubyrecords/about">About</a></li>
       <form class="search" action="/rubyrecords/home" method="post">
         <label for="album_by_name"></label>
-        <input class = "search-box" type="text" name="title" id="album_by_name" placeholder="Search..." list="auto" autocomplete="off">
+        <input class = "search-box" type="text" name="title" id="album_by_name" placeholder="Search Albums..." list="auto" autocomplete="off">
         <datalist id="auto">
           <% @albums = Album.alphabetise %>
           <% for album in @albums do %>

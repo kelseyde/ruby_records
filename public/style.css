@@ -6,6 +6,12 @@
   left: 535px;
 }
 
+p {
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+/* Navbar */
+
 .navbar {
   display: flex;
   align-content: flex-start;
@@ -50,8 +56,26 @@ li a:hover {
   background-color:#4CAF50;
 }
 
+.search {
+  position: absolute;
+  font-family: 'PT Sans Caption', sans-serif;
+  top: 20px;
+  right: 100px;
+  background: #e1e1e1;
+}
+
+.icon  {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  height: auto;
+  width: 40px;
+}
+
+/* About page */
+
 .about {
-  margin-top: 100px;
+  margin-top: 75px;
 }
 
 #about {
@@ -59,10 +83,39 @@ li a:hover {
   margin-top: 30px;
 }
 
+/* Store info */
+
 #store-info {
   text-align: center;
-  margin-top: 60px;
+  margin-top: 75px;
 }
+
+/* Not found search page */
+
+#notfound1 {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  margin-top: 200px;
+}
+
+#notfound2 {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  margin-top: 30px;
+}
+
+#notfound3 {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  margin-left: 600px;
+}
+
+#notfound4 {
+  position: absolute;
+  top: 50%;
+}
+
+/* Albums/Artists display pages */
 
 .index {
   display: block;
@@ -94,28 +147,6 @@ img {
   display: block;
   margin: auto;
   width: 100px;
-}
-
-.icon  {
-  position: absolute;
-  top: 10px;
-  right: 10px;
-  height: auto;
-  width: 40px;
-}
-
-.search {
-  position: absolute;
-  font-family: 'PT Sans Caption', sans-serif;
-  top: 20px;
-  right: 100px;
-  background: #e1e1e1;
-}
-
-#notfound {
-  font-family: 'PT Sans Caption', sans-serif;
-  text-align: center;
-  margin-top: 200px;
 }
 
 #manage_stock {
@@ -222,38 +253,36 @@ img {
   padding-left: 10px;
 }
 
+#artists {
+  margin-left: 30px;
+}
+
 #artist_name {
   margin-left: 20px;
 }
 
+/* Stock page */
 
-#buy {
-  font-family: 'PT Sans Caption', sans-serif;
-  text-align: left;
-}
-
-@media (min-width: 480px) {
-  .grid-row-sm {
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 720px) {
-  .grid-row-md {
-    flex-direction: row;
-  }
-}
-
-@media (min-width: 960px) {
-  .grid-row-lg {
-    flex-direction: row;
-  }
-}
-
-p {
+.stock_text {
   font-family: 'PT Sans Caption', sans-serif;
 }
 
+.stock-div {
+  margin-left: 50px;
+  margin-top: 60px;
+}
+
+.stock-form {
+  margin-left: 50px;
+}
+
+#stock_text {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: center;
+  margin-top: 90px;
+}
+
+/* New/Edit Album pages */
 
 .new_album {
   width: 22%;
@@ -295,13 +324,7 @@ p {
   resize: none;
 }
 
-/*artists*/
-
-#artists {
-  margin-left: 30px;
-}
-
-/* order/pay/buy styling */
+/* Order/Pay/Buy pages */
 
 .order_more {
   margin-left: 30px;
@@ -370,6 +393,11 @@ p {
   width: 100px;
 }
 
+#buy {
+  font-family: 'PT Sans Caption', sans-serif;
+  text-align: left;
+}
+
 #buy_p {
   font-family: 'PT Sans Caption', sans-serif;
   margin-top: 100px;
@@ -380,19 +408,6 @@ p {
   font-family: 'PT Sans Caption', sans-serif;
   margin-top: 100px;
   margin-left: 30px;
-}
-
-.stock_text {
-  font-family: 'PT Sans Caption', sans-serif;
-}
-
-.stock-div {
-  margin-left: 50px;
-  margin-top: 60px;
-}
-
-.stock-form {
-  margin-left: 50px;
 }
 
 /*footer*/
