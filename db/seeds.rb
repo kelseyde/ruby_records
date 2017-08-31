@@ -18,14 +18,16 @@ genre5.save
 
 artist1 = Artist.new({"name" => "Arcade Fire"})
 artist1.save
-
 artist2 = Artist.new({"name" => "Paul Simon"})
 artist2.save
-
 artist3 = Artist.new({"name" => "Simon and Garfunkel"})
 artist3.save
-
 artist4 = Artist.new({"name" => "The Mountain Goats"})
+artist4.save
+artist5 = Artist.new({"name" => "Blake Mills"})
+artist5.save
+artist6 = Artist.new({"name" => "Fleetwood Mac"})
+artist6.save
 
 album1 = Album.new({
   "title" => "The Suburbs",
@@ -77,85 +79,72 @@ album4 = Album.new({
   "buy_price" => 5,
   "sell_price" => 8
   })
+album4.save
 
-album4 = Album.new({
+album5 = Album.new({
   "title" => "Bridge Over Troubled Water",
   "artist_id" => artist3.id,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
+  "genre_id" => genre4.id,
+  "artwork" => "bridge.jpg",
+  "sold" => 10,
+  "current_stock" => 0,
+  "target_stock" => 3,
+  "buy_price" => 3,
+  "sell_price" => 4
   })
+album5.save
 
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
+album6 = Album.new({
+  "title" => "The Sunset Tree",
+  "artist_id" => artist4.id,
+  "genre_id" => genre5.id,
+  "artwork" => "the-sunset-tree.jpg",
+  "sold" => 12,
+  "current_stock" => 9,
+  "target_stock" => 10,
+  "buy_price" => 4,
+  "sell_price" => 5
   })
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
+album6.save
+
+album7 = Album.new({
+  "title" => "Goths",
+  "artist_id" => artist4.id,
+  "genre_id" => genre5.id,
+  "artwork" => "goths.jpg",
+  "sold" => 6,
+  "current_stock" => 4,
+  "target_stock" => 8,
+  "buy_price" => 5,
+  "sell_price" => 6
   })
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
+album7.save
+
+album8 = Album.new({
+  "title" => "Break Mirrors",
+  "artist_id" => artist5.id,
+  "genre_id" => genre1.id,
+  "artwork" => "breakmirrors.jpg",
+  "sold" => 3,
+  "current_stock" => 8,
+  "target_stock" => 8,
+  "buy_price" => 5,
+  "sell_price" => 6
   })
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
+album8.save
+
+album9 = Album.new({
+  "title" => "Rumours",
+  "artist_id" => artist6.id,
+  "genre_id" => genre3.id,
+  "artwork" => "rumours.jpg",
+  "sold" => 7,
+  "current_stock" => 8,
+  "target_stock" => 9,
+  "buy_price" => 5,
+  "sell_price" => 6
   })
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
-  })
-album4 = Album.new({
-  "title" => ,
-  "artist_id" => ,
-  "genre_id" => ,
-  "artwork" => ,
-  "sold" => ,
-  "current_stock" => ,
-  "target_stock" => ,
-  "buy_price" => ,
-  "sell_price" =>
-  })
+album9.save
 
 
 
@@ -179,6 +168,7 @@ review3 = Review.new({
   "album_id" => album2.id
   })
 review3.save
+
 
 store1 = Store.new({
   "name" => "Ruby Records",

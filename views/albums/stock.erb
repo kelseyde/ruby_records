@@ -1,20 +1,20 @@
 <% if !@low_stock.empty? || !@out_of_stock.empty?%>
-
+<div class="stock-wrap">
   <% if !@low_stock.empty? %>
-    <div class="stock-div">
-      <h3 class ="stock_text">The following albums are low on stock:</h3>
+      <h3 id ="stock_title">The following albums are low on stock:</h3>
+      <div class="stock-div">
       <table class ="stock-table">
         <thead>
           <tr>
-            <td class ="stock_text">Album</td>
-            <td class ="stock_text">Target Stock</td>
-            <td class ="stock_text">Current Stock</td>
+            <td class ="stock_text" style="text-align: left">Album</td>
+            <td class ="stock_text" style="text-align: center">Target Stock</td>
+            <td class ="stock_text" style="text-align: center">Current Stock</td>
           </tr>
         </thead>
         <tbody>
         <% for info in @low_stock do %>
           <tr>
-            <td class ="stock_text" style="text-align: center"><%= info[:album].title %></td>
+            <td class ="stock_text" style="text-align: left"><%= info[:album].title %></td>
             <td class ="stock_text" style="text-align: center"><%= info[:album].target_stock %></td>
             <td class ="stock_text" style="text-align: center"><%= info[:album].current_stock %></td>
           </tr>
@@ -25,20 +25,20 @@
    <% end %>
 
    <% if !@out_of_stock.empty? %>
-     <div class="stock-div">
-       <h3 class ="stock-text">The following albums are out of stock:</h3>
-       <table class ="stock_table">
+       <h3 id ="stock_title">The following albums are out of stock:</h3>
+       <div class="stock-div">
+       <table class ="stock_table2">
          <thead>
            <tr>
-             <td class ="stock_text">Album</td>
-             <td class ="stock_text">Target Stock</td>
-             <td class ="stock_text">Current Stock</td>
+             <td class ="stock_text" style="text-align: left">Album</td>
+             <td class ="stock_text" style="text-align: center">Target Stock</td>
+             <td class ="stock_text" style="text-align: center">Current Stock</td>
            </tr>
          </thead>
          <tbody>
          <% for info in @out_of_stock do %>
            <tr>
-             <td class ="stock_text" style="text-align: center"><%= info[:album].title %></td>
+             <td class ="stock_text" style="text-align: left"><%= info[:album].title %></td>
              <td class ="stock_text" style="text-align: center"><%= info[:album].target_stock %></td>
              <td class ="stock_text" style="text-align: center"><%= info[:album].current_stock %></td>
            </tr>
@@ -49,13 +49,13 @@
     <% end %>
 
     <div class="stock-form">
-      <p class ="stock_text">The total cost to replenish stock is £<%= @total_cost %>.<br>
+      <p id="stock_text">The total cost to replenish stock is £<%= @total_cost %>.<br>
          Would you like to replenish stock now?</p>
-      <form action = "/rubyrecords/albums/stock/replace" method= "POST">
+      <form id="stock_button" action = "/rubyrecords/albums/stock/replace" method= "POST">
         <input type="submit" value="Replenish Stock"/>
       </form>
     </div>
-
+</div>
 <% end %>
 
 <% if @low_stock.empty? && @out_of_stock.empty? %>

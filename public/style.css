@@ -149,19 +149,6 @@ img {
   width: 100px;
 }
 
-#manage_stock {
-  font-family: 'PT Sans Caption', sans-serif;
-  text-align: center;
-  text-decoration: bold;
-  color: #cc0000;
-  margin-top: 10px;
-}
-
-#manage_stock:visited {
-  text-decoration: none;
-  color: #cc0000
-}
-
 .grid {
   display: flex;
   align-content: flex-start;
@@ -174,6 +161,7 @@ img {
 }
 
 .grid-item {
+  position: relative;
   border: 2px solid red;
   margin-bottom: 20px;
   flex: 1;
@@ -185,8 +173,8 @@ img {
 }
 
 .grid-item img {
-  min-height: 190px;
-  max-height: 190px;
+  min-height: 160px;
+  max-height: 160px;
   width: auto;
   padding-top: 20px;
 }
@@ -210,7 +198,7 @@ img {
 
 .grid-item p {
   text-align: left;
-  margin-left: 20px;
+  margin-left: 1px;
 }
 
 .grid-item td {
@@ -219,7 +207,8 @@ img {
 }
 
 .grid-item tr {
-  margin-top: : 15px;
+  margin-top: 15px;
+  margin-left: 1px;
 }
 
 .grid-item table {
@@ -249,6 +238,16 @@ img {
   min-height: 100px;
 }
 
+#album-info {
+  position: absolute;
+  left: 0px;
+}
+
+#album-action {
+  position: absolute;
+  bottom: 10px;
+}
+
 #grid-a-p {
   padding-left: 10px;
 }
@@ -261,25 +260,31 @@ img {
   margin-left: 20px;
 }
 
-/* Stock page */
-
-.stock_text {
-  font-family: 'PT Sans Caption', sans-serif;
-}
-
-.stock-div {
-  margin-left: 50px;
-  margin-top: 60px;
-}
-
-.stock-form {
-  margin-left: 50px;
-}
-
-#stock_text {
+#manage_stock {
   font-family: 'PT Sans Caption', sans-serif;
   text-align: center;
-  margin-top: 90px;
+  text-decoration: bold;
+  color: #cc0000;
+  margin-top: 10px;
+}
+
+#manage_stock:visited {
+  text-decoration: none;
+  color: #cc0000
+}
+
+/* Stock page */
+
+
+.stock-wrap {
+  margin-top: 80px;
+  text-align:center;
+  font-family: 'PT Sans Caption', sans-serif;
+}
+
+.stock-wrap table{
+  margin:auto;
+  font-family: 'PT Sans Caption', sans-serif;
 }
 
 /* New/Edit Album pages */
