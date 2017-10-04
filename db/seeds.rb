@@ -3,7 +3,6 @@ require_relative("../models/artist")
 require_relative("../models/genre")
 require_relative("../models/review")
 require_relative("../models/store")
-require("pry-byebug")
 
 genre1 = Genre.new({"name" => "Indie Rock"})
 genre1.save
@@ -176,6 +175,3 @@ store1 = Store.new({
   "cash" => 2000
   })
 store1.save
-
-binding.pry
-nil
