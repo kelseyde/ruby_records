@@ -19,12 +19,6 @@ class Album
     @target_stock = info["target_stock"].to_i
     @buy_price = info["buy_price"].to_i
     @sell_price = info["sell_price"].to_i
-
-    # @@rows = "title, artist_id, genre_id, artwork, sold, current_stock, "\
-    #         "target_stock, buy_price, sell_price"
-    # @@prepared = "$1, $2, $3, $4, $5, $6, $7, $8, $9"
-    # @@values = [@title, @artist_id, @genre_id, @artwork, @sold,
-    #           @current_stock, @target_stock, @buy_price, @sell_price]
   end
 
   def self.map_items(album_hash)
@@ -144,7 +138,7 @@ class Album
         info = {
           album: album,
           below_target: album.target_stock - album.current_stock,
-          cost: album.buy_price * album.target_stock - album.current_stock
+          cost: album.buy_price * (album.target_stock - album.current_stock)
         }
         low_stock << info
       end
@@ -166,6 +160,9 @@ class Album
     end
     return out_of_stock
   end
+
+
+
 
   def self.cost_to_replace
     cost = 0
